@@ -1,6 +1,7 @@
 <?php
 
 $success = false;
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -10,17 +11,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $twitter = trim($_POST['twitter'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
-    saveGuestbookEntry([
-        'firstname' => $firstname,
-        'lastname' => $lastname,
-        'homepage' => $homepage,
-        'twitter' => $twitter,
-        'message' => $message,
-    ]);
+    if ($firstname === '' && $lastname === '') {
+        $errors[] = 'Bitte gib deinen Namen ein.';
+    }
 
-    $success = true;
+    if ($message === '') {
+        $errors[] = 'Bitte gib eine Nachricht ein.';
+    }
+
+    if (mb_strlen($message) > 500) {
+        $errors[] = 'Die Nachricht darf maximal 500 Zeichen lang sein.';
+    }
+
+    if ($errors === []) {
+
+        saveGuestbookEntry([
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'homepage' => $homepage,
+            'twitter' => $twitter,
+            'message' => $message,
+        ]);
+
+        $success = true;
+    }
 }
-
 ?>
     <!doctype html>
     <html lang="de">
@@ -34,6 +49,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php if ($success) { ?>
         <p>Danke für deinen Eintrag.</p>
+    <?php } ?>
+
+    <?php if ($errors !== []) { ?>
+
+        <ul>
+            <?php foreach ($errors as $error) { ?>
+                <li><?= $error ?></li>
+            <?php } ?>
+        </ul>
+
     <?php } ?>
 
     <form method="post">

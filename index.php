@@ -1,42 +1,42 @@
 <?php
 
+require_once __DIR__ . '/GuestbookEntryRequest.php';
+
 $success = false;
 $errors = [];
 
-$firstname = '';
-$lastname = '';
-$homepage = '';
-$twitter = '';
-$message = '';
+$request = new GuestbookEntryRequest(
+    firstname: '',
+    lastname: '',
+    homepage: '',
+    twitter: '',
+    message: '',
+);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $firstname = trim($_POST['firstname'] ?? '');
-    $lastname = trim($_POST['lastname'] ?? '');
-    $homepage = trim($_POST['homepage'] ?? '');
-    $twitter = trim($_POST['twitter'] ?? '');
-    $message = trim($_POST['message'] ?? '');
+    $request = GuestbookEntryRequest::fromPost($_POST);
 
-    if ($firstname === '' && $lastname === '') {
+    if ($request->firstname === '' && $request->lastname === '') {
         $errors[] = 'Bitte gib deinen Namen ein.';
     }
 
-    if ($message === '') {
+    if ($request->message === '') {
         $errors[] = 'Bitte gib eine Nachricht ein.';
     }
 
-    if (mb_strlen($message) > 500) {
+    if (mb_strlen($request->message) > 500) {
         $errors[] = 'Die Nachricht darf maximal 500 Zeichen lang sein.';
     }
 
     if ($errors === []) {
 
         saveGuestbookEntry([
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'homepage' => $homepage,
-            'twitter' => $twitter,
-            'message' => $message,
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'homepage' => $request->homepage,
+            'twitter' => $request->twitter,
+            'message' => $request->message,
         ]);
 
         $success = true;
@@ -71,27 +71,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <p>
             <label for="firstname">Vorname</label><br>
-            <input id="firstname" name="firstname" value="<?= htmlspecialchars($firstname) ?>">
+            <input id="firstname" name="firstname" value="<?= htmlspecialchars($request->firstname) ?>">
         </p>
 
         <p>
             <label for="lastname">Nachname</label><br>
-            <input id="lastname" name="lastname" value="<?= htmlspecialchars($lastname) ?>">
+            <input id="lastname" name="lastname" value="<?= htmlspecialchars($request->lastname) ?>">
         </p>
 
         <p>
             <label for="homepage">Homepage</label><br>
-            <input id="homepage" name="homepage" value="<?= htmlspecialchars($homepage) ?>">
+            <input id="homepage" name="homepage" value="<?= htmlspecialchars($request->homepage) ?>">
         </p>
 
         <p>
             <label for="twitter">Twitter / X</label><br>
-            <input id="twitter" name="twitter" value="<?= htmlspecialchars($twitter) ?>">
+            <input id="twitter" name="twitter" value="<?= htmlspecialchars($request->twitter) ?>">
         </p>
 
         <p>
             <label for="message">Nachricht</label><br>
-            <textarea id="message" name="message"><?= htmlspecialchars($message) ?></textarea>
+            <textarea id="message" name="message"><?= htmlspecialchars($request->message) ?></textarea>
         </p>
 
         <button type="submit">

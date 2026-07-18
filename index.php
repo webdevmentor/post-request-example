@@ -3,6 +3,12 @@
 $success = false;
 $errors = [];
 
+$firstname = '';
+$lastname = '';
+$homepage = '';
+$twitter = '';
+$message = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $firstname = trim($_POST['firstname'] ?? '');
@@ -65,27 +71,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <p>
             <label for="firstname">Vorname</label><br>
-            <input id="firstname" name="firstname">
+            <input id="firstname" name="firstname" value="<?= htmlspecialchars($firstname) ?>">
         </p>
 
         <p>
             <label for="lastname">Nachname</label><br>
-            <input id="lastname" name="lastname">
+            <input id="lastname" name="lastname" value="<?= htmlspecialchars($lastname) ?>">
         </p>
 
         <p>
             <label for="homepage">Homepage</label><br>
-            <input id="homepage" name="homepage">
+            <input id="homepage" name="homepage" value="<?= htmlspecialchars($homepage) ?>">
         </p>
 
         <p>
             <label for="twitter">Twitter / X</label><br>
-            <input id="twitter" name="twitter">
+            <input id="twitter" name="twitter" value="<?= htmlspecialchars($twitter) ?>">
         </p>
 
         <p>
             <label for="message">Nachricht</label><br>
-            <textarea id="message" name="message"></textarea>
+            <textarea id="message" name="message"><?= htmlspecialchars($message) ?></textarea>
         </p>
 
         <button type="submit">

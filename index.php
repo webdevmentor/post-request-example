@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/GuestbookEntryRequest.php';
+require_once __DIR__ . '/GuestbookEntryValidator.php';
 
 $success = false;
 $errors = [];
@@ -17,17 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $request = GuestbookEntryRequest::fromPost($_POST);
 
-    if ($request->firstname === '' && $request->lastname === '') {
-        $errors[] = 'Bitte gib deinen Namen ein.';
-    }
-
-    if ($request->message === '') {
-        $errors[] = 'Bitte gib eine Nachricht ein.';
-    }
-
-    if (mb_strlen($request->message) > 500) {
-        $errors[] = 'Die Nachricht darf maximal 500 Zeichen lang sein.';
-    }
+    $errors = GuestbookEntryValidator::validate($request);
 
     if ($errors === []) {
 

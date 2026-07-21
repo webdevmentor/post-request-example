@@ -2,19 +2,19 @@
 
 ## Einführung
 
-Dieses Projekt demonstriert einen modernen und zeitgemäßen Ansatz zum Verarbeiten von POST-Requests in PHP. Es verläuft in 7 Schritten, wobei jeder Schritt auf dem vorherigen aufbaut und Best Practices sowie Clean-Code-Prinzipien zeigt.
+Dieses Projekt demonstriert einen zeitgemäßen Ansatz zum Verarbeiten von POST-Requests in PHP. Es verläuft in 7 Schritten, wobei jeder Schritt auf dem vorherigen aufbaut und Best Practices sowie Clean-Code-Prinzipien zeigt.
 
 ### Übersicht der Schritte
 
-| Schritt | Branch | Beschreibung |
-|---------|--------|-------------|
-| main | [main](https://github.com/webdevmentor/post-request-example/tree/main) | Basis-Projektsetup mit POST-Request-Verarbeitung |
-| 1 | [step/00-validation](https://github.com/webdevmentor/post-request-example/tree/step/validation) | Einfache Eingabevalidierung hinzufügen |
-| 2 | [step/000-preserve-form-input](https://github.com/webdevmentor/post-request-example/tree/step/00-preserve-form-input) | Formulareingaben bei Fehlern bewahren |
-| 3 | [step/01-introduction-request-dto](https://github.com/webdevmentor/post-request-example/tree/step/01-introduction-request-dto) | Request DTO zur Vereinfachung der Eingabeverarbeitung einführen |
-| 4 | [step/02-extract-validator](https://github.com/webdevmentor/post-request-example/tree/step/02-extract-validator) | Validierungslogik in separaten Validator extrahieren |
-| 5 | [step/03-introduce-domain-object](https://github.com/webdevmentor/post-request-example/tree/step/03-introduce-domain-object) | Domain Object für Geschäftslogik einführen |
-| 6 | [step/post-redirect-get](https://github.com/webdevmentor/post-request-example/tree/step/post-redirect-get) | Post-Redirect-Get Pattern implementieren |
+| Schritt | Branch                                                                                                                         | Beschreibung |
+|---------|--------------------------------------------------------------------------------------------------------------------------------|-------------|
+| main | [main](https://github.com/webdevmentor/post-request-example/tree/main)                                                         | Basis-Projektsetup mit POST-Request-Verarbeitung |
+| 1 | [step/00-validation](https://github.com/webdevmentor/post-request-example/tree/step/00-validation)                             | Einfache Eingabevalidierung hinzufügen |
+| 2 | [step/01-preserve-form-input](https://github.com/webdevmentor/post-request-example/tree/step/01-preserve-form-input)           | Formulareingaben bei Fehlern bewahren |
+| 3 | [step/02-introduction-request-dto](https://github.com/webdevmentor/post-request-example/tree/step/02-introduction-request-dto) | Request DTO zur Vereinfachung der Eingabeverarbeitung einführen |
+| 4 | [step/03-extract-validator](https://github.com/webdevmentor/post-request-example/tree/step/03-extract-validator)               | Validierungslogik in separaten Validator extrahieren |
+| 5 | [step/04-introduce-domain-object](https://github.com/webdevmentor/post-request-example/tree/step/04-introduce-domain-object)   | Domain Object für Geschäftslogik einführen |
+| 6 | [step/05-post-redirect-get](https://github.com/webdevmentor/post-request-example/tree/step/05-post-redirect-get)               | Post-Redirect-Get Pattern implementieren |
 
 ## Lokal ausführen
 

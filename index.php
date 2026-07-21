@@ -1,6 +1,9 @@
 <?php
 
+require_once __DIR__ . '/GuestbookEntry.php';
+require_once __DIR__ . '/GuestbookEntryMapper.php';
 require_once __DIR__ . '/GuestbookEntryRequest.php';
+require_once __DIR__ . '/GuestbookEntryValidator.php';
 
 $success = false;
 $errors = [];
@@ -20,14 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = GuestbookEntryValidator::validate($request);
 
     if ($errors === []) {
+        $guestbookEntry = GuestbookEntryMapper::fromRequest($request);
 
-        saveGuestbookEntry([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'homepage' => $request->homepage,
-            'twitter' => $request->twitter,
-            'message' => $request->message,
-        ]);
+        saveGuestbookEntry($guestbookEntry);
 
         $success = true;
     }
@@ -109,11 +107,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 |
 */
 
-function saveGuestbookEntry(array $entry): void
+function saveGuestbookEntry(GuestbookEntry $entry): void
 {
+    $line = implode(';', [
+        $entry->displayName,
+        $entry->homepage,
+        $entry->twitter,
+        $entry->message,
+    ]);
+
     file_put_contents(
-        'guestbook.txt',
-        implode('|', $entry) . PHP_EOL,
+        __DIR__ . '/guestbook.txt',
+        $line . PHP_EOL,
         FILE_APPEND
     );
 }

@@ -1,6 +1,9 @@
 <?php
 
+require_once __DIR__ . '/GuestbookEntry.php';
+require_once __DIR__ . '/GuestbookEntryMapper.php';
 require_once __DIR__ . '/GuestbookEntryRequest.php';
+require_once __DIR__ . '/GuestbookEntryValidator.php';
 
 $success = false;
 $errors = [];
@@ -24,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         saveGuestbookEntry($guestbookEntry);
 
-        $success = true;
+        header('Location: /');
     }
 }
 ?>
@@ -33,6 +36,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <head>
         <meta charset="utf-8">
         <title>Mein Gästebuch</title>
+        <style>
+            * { box-sizing: border-box }
+            html { display: flex }
+            body {
+                margin: auto;
+                width: 100%;
+                max-width: 62.5%;
+            }
+            form {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 0 1rem;
+            }
+            form p {
+                flex-basis: calc(50% - 1rem);
+            }
+            form p:last-of-type {
+                flex-grow: 1;
+            }
+            form p input, form p textarea {
+                width: 100%;
+            }
+            form p textarea {
+                resize: vertical;
+                height: 10em;
+            }
+        </style>
     </head>
     <body>
 

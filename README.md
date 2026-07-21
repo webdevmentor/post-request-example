@@ -1,50 +1,50 @@
-# Modern PHP POST Request Example
+# Modernes PHP POST-Request Beispiel
 
-## Introduction
+## Einführung
 
-This project demonstrates a modern, contemporary approach to handling POST requests in PHP. It progresses through 7 steps, each building upon the previous one to show best practices and clean code principles.
+Dieses Projekt demonstriert einen modernen und zeitgemäßen Ansatz zum Verarbeiten von POST-Requests in PHP. Es verläuft in 7 Schritten, wobei jeder Schritt auf dem vorherigen aufbaut und Best Practices sowie Clean-Code-Prinzipien zeigt.
 
-### Steps Overview
+### Übersicht der Schritte
 
-| Step | Branch | Description |
-|------|--------|-------------|
-| main | [main](https://github.com/webdevmentor/post-request-example/tree/main) | Base project setup with POST request handling |
-| 1 | [step/validation](https://github.com/webdevmentor/post-request-example/tree/step/validation) | Add simple input validation |
-| 2 | [step/00-preserve-form-input](https://github.com/webdevmentor/post-request-example/tree/step/00-preserve-form-input) | Preserve form input in case errors occurred |
-| 3 | [step/01-introduction-request-dto](https://github.com/webdevmentor/post-request-example/tree/step/01-introduction-request-dto) | Introduce Request DTO to simplify input handling |
-| 4 | [step/02-extract-validator](https://github.com/webdevmentor/post-request-example/tree/step/02-extract-validator) | Extract validation logic into separate validator |
-| 5 | [step/03-introduce-domain-object](https://github.com/webdevmentor/post-request-example/tree/step/03-introduce-domain-object) | Introduce domain object for business logic |
-| 6 | [step/post-redirect-get](https://github.com/webdevmentor/post-request-example/tree/step/post-redirect-get) | Implement Post-Redirect-Get pattern |
+| Schritt | Branch | Beschreibung |
+|---------|--------|-------------|
+| main | [main](https://github.com/webdevmentor/post-request-example/tree/main) | Basis-Projektsetup mit POST-Request-Verarbeitung |
+| 1 | [step/00-validation](https://github.com/webdevmentor/post-request-example/tree/step/validation) | Einfache Eingabevalidierung hinzufügen |
+| 2 | [step/000-preserve-form-input](https://github.com/webdevmentor/post-request-example/tree/step/00-preserve-form-input) | Formulareingaben bei Fehlern bewahren |
+| 3 | [step/01-introduction-request-dto](https://github.com/webdevmentor/post-request-example/tree/step/01-introduction-request-dto) | Request DTO zur Vereinfachung der Eingabeverarbeitung einführen |
+| 4 | [step/02-extract-validator](https://github.com/webdevmentor/post-request-example/tree/step/02-extract-validator) | Validierungslogik in separaten Validator extrahieren |
+| 5 | [step/03-introduce-domain-object](https://github.com/webdevmentor/post-request-example/tree/step/03-introduce-domain-object) | Domain Object für Geschäftslogik einführen |
+| 6 | [step/post-redirect-get](https://github.com/webdevmentor/post-request-example/tree/step/post-redirect-get) | Post-Redirect-Get Pattern implementieren |
 
-## Run Locally
+## Lokal ausführen
 
-This project requires only **PHP** and a web server.
+Dieses Projekt benötigt nur **PHP** und einen Web-Server.
 
-### Quick Start
+### Schnelleinstieg
 
-#### Using Docker
-If you have Docker installed, you can run the project with the built-in PHP development server:
+#### Mit Docker
+Wenn Docker installiert ist, kannst du das Projekt mit dem integrierten PHP-Entwicklungs-Server ausführen:
 
 ```bash
 docker run --rm -it -v $(pwd):/app -w /app -p 8000:8000 php:latest php -S 0.0.0.0:8000
 ```
 
-Then open your browser and navigate to `http://localhost:8000`
+Öffne dann deinen Browser und navigiere zu `http://localhost:8000`
 
-#### Direct PHP
-Alternatively, if PHP is installed on your system:
+#### Direkt mit PHP
+Alternativ, wenn PHP auf deinem System installiert ist:
 
 ```bash
 php -S localhost:8000
 ```
 
-Then open your browser and navigate to `http://localhost:8000`
+Öffne dann deinen Browser und navigiere zu `http://localhost:8000`
 
-## License
+## Lizenz
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Informationen findest du in der [LICENSE](LICENSE) Datei.
 
-## Author
+## Autor
 
 **Steffen Grahl** aka **WebdevMentor**  
 https://www.webdevmentor.info
